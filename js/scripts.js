@@ -7,23 +7,6 @@
 // Scripts
 // 
 
-document.addEventListener("DOMContentLoaded", function() {
-    const masthead = document.querySelector(".masthead");
-    const images = [
-      "../assets/img/desktop-wallpaper-apj-abdul-kalam-a.jpg",
-      "../assets/img/pic13.jpeg",
-      "../assets/img/periyar.jpg"
-    ];
-    let currentImageIndex = 0;
-  
-    function changeBackgroundImage() {
-      masthead.style.backgroundImage = `url(${images[currentImageIndex]})`;
-      currentImageIndex = (currentImageIndex + 1) % images.length;
-    }
-  
-    // Call the function to change the background image every 2 seconds
-    setInterval(changeBackgroundImage, 3000);
-  });
   
 
 window.addEventListener('DOMContentLoaded', event => {
