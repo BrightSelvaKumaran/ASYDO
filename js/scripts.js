@@ -7,6 +7,50 @@
 // Scripts
 // 
 
+function formSubmission() {
+    var pdfDownloadingForm = document.getElementById('pdfFinalForm');
+    if (pdfDownloadingForm) {
+        pdfDownloadingForm.style.display = 'block';
+    }
+    var nameInput = document.getElementById('name').value;
+    var dob = document.getElementById('dob').value;
+    var phone = document.getElementById('phone').value;
+    var address = document.getElementById('message').value;
+    console.log("NAME INPUT : " , nameInput);
+    console.log("DOB INPUT : " , dob);
+    console.log("PHONE INPUT : " , phone);
+    console.log("ADDRESS INPUT : " , address);
+    document.querySelector(".col-8 > P:nth-child(1)").textContent = nameInput;
+    document.querySelector(".col-8 > P:nth-child(2)").textContent = dob;
+    document.querySelector(".col-8 > P:nth-child(3)").textContent = phone;
+    document.querySelector(".col-8 > P:nth-child(4)").textContent = address;
+
+    
+
+        const elementToConvert = document.getElementById('pdfFinalForm');
+
+        html2canvas(elementToConvert).then(canvas => {
+            const imgData = canvas.toDataURL('image/png');
+
+            const pdfWidth = canvas.width;
+            const pdfHeight = canvas.height;
+            console.log("CANVAS WIDTH : "  ,pdfWidth);
+            console.log("CANVAS HEIGHT : "  ,pdfHeight);
+            const pdf = new jsPDF('p', 'px', [pdfWidth, pdfHeight]);
+            pdf.addImage(imgData, 'PNG', 0, -28, pdfWidth, pdfHeight);
+
+            // Save or download the PDF
+            pdf.save('asydoMemberCard.pdf');
+        });
+        document.getElementById('pdfFinalForm').style.display = 'none';
+        document.getElementById('name').value = null;
+        document.getElementById('dob').value = null;
+        document.getElementById('phone').value = null;
+        document.getElementById('message').value = null;
+}
+
+
+
   
 
 window.addEventListener('DOMContentLoaded', event => {
